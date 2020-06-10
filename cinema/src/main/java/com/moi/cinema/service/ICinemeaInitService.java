@@ -8,6 +8,7 @@ public interface ICinemeaInitService {
 	public void initPlace();
 	public void initSceance();
 	public void initCategorie();
+	public void initfilms();
 	public void films();
 	public void initProjections();
 	public void initTickets();
