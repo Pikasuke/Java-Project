@@ -23,6 +23,23 @@ go.addEventListener("click", () => {
     })
 })
 
+const buttonFigth = document.querySelector("#fight")
+buttonFigth.addEventListener("click", () => {
+    const hero1 = 70,
+    const hero2 = 23
+}
+fetch("/fight"), {
+    method:"POST", 
+    body : JSON.stringify(body),
+    headers:{"Content-Type": "application/json"
+}
+})
+    .then(response =>response.json()
+    .then(data => console.log(data))
+    .catch(error => console.log("erruer de la requete front to back", error))
+)
+
+
 const forms = document.querySelectorAll("input");
 console.log(forms)
 forms.forEach(form => {
