@@ -1,0 +1,23 @@
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+import Lifecycle from './lifecycle'
+import Footer from './Footer'
+import { Formulaire } from './Formulaire'
+
+// Composant fonctionnel nommé App
+const AppArrow = () => {
+	// Attention, c'est du JSX, pas de l'HTML
+	// <> -> Equivalent de <React.Fragment>
+	return (
+		<>
+			<h1>App Component</h1>
+			<Lifecycle />
+			<Formulaire />
+			<Footer prenom="Fabio" couleur="green" />
+		</>
+	)
+}
+
+// j'exporte le composant App en faisant un "export default". Je pourrais donc le renommer, si je le souhaite, lorsque je l'importerai
+export default App
