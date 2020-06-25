@@ -1,0 +1,17 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  /* color: initial; */
+}
+
+.activeLink {
+  font-weight: 700;
+  color: brown;
+}
+
+.colorBlue {
+  background-color: rgb(78, 149, 241);
+}
