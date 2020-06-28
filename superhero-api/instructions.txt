@@ -1,0 +1,4 @@
+Pour que le projet fonctionne, il faudra:
+1. Créer un ficher ".env" dans lequel devra être écrit "ACCESS_TOKEN=XXXXXXX" ou XXXXXXX sera la clé api obtenue sur le site: https://superheroapi.com/
+2. npm install
+2. npm start
