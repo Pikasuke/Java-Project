@@ -3,12 +3,16 @@ import express from "express";
 import mongoose from "mongoose";
 import Messages from "./dbMessage.js";
 import Pusher from "pusher";
-
+import cors from "cors"
+//import pusherKey from './Key.js'
+const mongoKey = '9BWFCJb4Tt877qs'
 //ap config
 const app = express()
 const port = process.env.PORT || 9000
 
-const pusher = new Pusher({
+const db = mongoose.connection
+
+const pusherKey = new Pusher({
     appId: '1074938',
     key: '62182a60c8cad08d3248',
     secret: 'a7cd865c2ab15fe509b1',
@@ -16,7 +20,6 @@ const pusher = new Pusher({
     encrypted: true
 });
 
-const db = mongoose.connection
 
 db.once("open", () => {
     console.log("DB connected");
@@ -29,10 +32,12 @@ db.once("open", () => {
 
         if (change.operationType === 'insert') {
             const messageDetails = change.fullDocument;
-            pusher.trigger('messages', 'inserted',
+            pusherKey.trigger('messages', 'inserted',
                 {
-                    name: messageDetails.user,
-                    message: messageDetails.message
+                    name: messageDetails.name,
+                    message: messageDetails.message,
+                    timestamp: messageDetails.timestamp,
+                    received : messageDetails.received,
                 }
             )
         } else {
@@ -43,10 +48,16 @@ db.once("open", () => {
 
 //middlleware
 app.use(express.json())
+app.use(cors())
 
+// app.use((req, res, next) => {
+//     res.setHeader("Access-Controm-Allow-Origin", "*");
+//     res.setHeader("Access-Controm-Allow-Headers", "*");
+//     next();
+// })
 
 // DB config
-const connection_url = `mongodb+srv://admin:9BWFCJb4Tt877qs@cluster0.smjkx.mongodb.net/whatsap-back?retryWrites=true&w=majority`
+const connection_url = `mongodb+srv://admin:${mongoKey}@cluster0.smjkx.mongodb.net/whatsap-back?retryWrites=true&w=majority`
 
 mongoose.connect(connection_url, {
     useCreateIndex: true,
