@@ -7,6 +7,8 @@ import Messages from "./dbMessage.js";
 const app = express()
 const port = process.env.PORT || 9000
 //middlleware
+app.use(express.json())
+
 
 // DB config
 const connection_url = `mongodb+srv://admin:9BWFCJb4Tt877qs@cluster0.smjkx.mongodb.net/whatsap-back?retryWrites=true&w=majority`
