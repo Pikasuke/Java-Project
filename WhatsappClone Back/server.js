@@ -4,21 +4,12 @@ import mongoose from "mongoose";
 import Messages from "./dbMessage.js";
 import Pusher from "pusher";
 import cors from "cors"
-//import pusherKey from './Key.js'
-const mongoKey = '9BWFCJb4Tt877qs'
+import { pusherKey, mongoKey } from './Key.js'
 //ap config
 const app = express()
 const port = process.env.PORT || 9000
 
 const db = mongoose.connection
-
-const pusherKey = new Pusher({
-    appId: '1074938',
-    key: '62182a60c8cad08d3248',
-    secret: 'a7cd865c2ab15fe509b1',
-    cluster: 'eu',
-    encrypted: true
-});
 
 
 db.once("open", () => {
