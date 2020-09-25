@@ -11,6 +11,9 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CollectionId;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,5 +28,6 @@ public class Categorie {
 	@Column(length = 75)
 	private String name;
 	@OneToMany(mappedBy = "categorie")
+    @JsonProperty(access = Access.WRITE_ONLY)
 	private Collection<Film> films;
 }
