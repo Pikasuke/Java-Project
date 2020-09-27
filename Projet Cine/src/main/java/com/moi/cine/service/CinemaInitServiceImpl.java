@@ -74,7 +74,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
 			Stream.of("UGC", "Gaumont", "Pathe", "Megarama", "Imax").forEach(nameCinema -> {
 				Cinema cinema = new Cinema();
 				cinema.setName(nameCinema);
-				cinema.setNombreDeSalle(1+(int)(Math.random()*3)); //3 + 5
+				cinema.setNombreDeSalle(3+(int)(Math.random()*5)); //3 + 5
 				cinema.setVille(ville);
 				cinemaRepository.save(cinema);
 			});
@@ -89,7 +89,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService{
 				Salle salle = new Salle();
 				salle.setName("Salle "+i+1);
 				salle.setCinema(cinema);
-				salle.setNombrePlace(1+(int)(Math.random()*1)); // 15+35
+				salle.setNombrePlace(10+(int)(Math.random()*20)); // 15+35
 				salleRepository.save(salle);
 			}
 		});
